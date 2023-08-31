@@ -29,9 +29,9 @@ Ensure you have the following installed on your system:
 1. Open the terminal.
 2. Navigate to the directory where you want to create your Django project.
 
-```
-cd directory-name
-```
+   ```
+   cd directory-name
+   ```
 3. Run the following command to create a virtual environment:
 
    ```
