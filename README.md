@@ -6,7 +6,7 @@ This README file provides the  instructions on how to set up and run a Django ap
 
 Ensure you have the following installed on your system:
 
-- Python 3.x
+- Python 3.10.12
 - `pip` (Python package installer)
 
 ## Step 1: Install `pip`
