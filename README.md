@@ -1,13 +1,15 @@
 # Welcome to MzaziConnect Backend
 
 This repository contains the backend code for a RESTful APIs that provides access to assignments  resources for teachers in the Competency Based Curriculum.
+
+
 The README file provides the  instructions on how to set up and run a Django application. It covers installing `pip`, setting up a virtual environment, installing dependencies from `requirements.txt`, and running the Django app.
 
 ## Prerequisites
 
 Ensure you have the following installed on your system:
 
-- Python 3.10.12
+- `Python 3.10.12`
 - `pip` (Python package installer)
 
 ## Step 1: Install `pip`
