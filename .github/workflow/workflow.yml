@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - staging
+      - dev
 jobs:
   build:
     runs-on: ubuntu 20.04
@@ -27,3 +29,11 @@ jobs:
     - name: Run tests
       run: 
         python manage.py test
+    
+    - name: Install Pre-commit
+      run:
+        pip install pre-commit
+    
+    - name: Run Pre-commit
+      run: 
+        pre-commit run --all-files
