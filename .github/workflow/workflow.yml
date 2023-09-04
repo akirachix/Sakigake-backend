@@ -2,7 +2,14 @@ name: Django CI/CD
 on:
   push:
     branches:
-      - main
+      main
+      staging
+      dev
+  pull requests:
+    branches:
+      main
+      staging
+      dev
 jobs:
   build:
     runs-on: ubuntu 20.04
@@ -22,8 +29,17 @@ jobs:
     
     - name: Make migrations
       run: 
-        python manage.py migrate
+        python3 manage.py migrate
+    
+    - name: Run server
+      run: 
+        python3 manage.py runserver
 
     - name: Run tests
       run: 
         python manage.py test
+    
+    - name: Install requirements 
+        run: pip install -r requirements.txt
+      - name: Check Syntax
+        run: pre-commit run --all-files
