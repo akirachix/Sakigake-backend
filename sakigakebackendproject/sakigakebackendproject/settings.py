@@ -75,10 +75,16 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Sakigakebackendproject',
+        'NAME': 'mzaziconnect',      
+        'USER': 'sakigake',        
+        'PASSWORD': 'mzaziconnect',  
+        'HOST': 'localhost',    
+        'PORT': '',              
     }
 }
 
