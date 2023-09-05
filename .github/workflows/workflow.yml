@@ -37,7 +37,8 @@ steps:
 - name: Check Syntax
   run:
     pre-commit run --all-files
--name: Run Migrations
+
+- name: Run Migrations
   run: python3 manage.py migrate
 - name: Run tests
   run:
