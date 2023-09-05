@@ -1,8 +1,6 @@
-default_language_version:
-  python: python3.8
-default_stages: [commit, push]
+default_language_version: python3.10
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+- repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
     hooks:
       - id: trailing-whitespace
@@ -12,7 +10,6 @@ repos:
     rev: 1.7.0
     hooks:
       - id: bandit
-        args: ['-iii', '-ll']
   - repo: https://github.com/PyCQA/flake8
     rev: 3.8.4
     hooks:
@@ -25,9 +22,4 @@ repos:
     rev: v5.7.0
     hooks:
       - id: isort
-  - repo: https://github.com/psf/black
-    rev: 22.3.0
-    hooks:
-      - id: black
         exclude: ^.*\b(migrations)\b.*$
-        additional_dependencies: ['click==8.1.0']
