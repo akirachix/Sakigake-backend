@@ -33,14 +33,13 @@ jobs:
       run:
         pip install -r requirements.txt
         
-   - name: Check Syntax
+    - name: Check Syntax
       run: |
         pre-commit run --all-files
-
-
-   - name: Run Migrations
+        
+    - name: Run Migrations
       run: python3 manage.py migrate
-
-   - name: Run tests
+      
+    - name: Run tests
       run:
         python manage.py test
