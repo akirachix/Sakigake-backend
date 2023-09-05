@@ -52,9 +52,9 @@ jobs:
         run:
           pip install -r requirements.txt
 
-      - name: Check Syntax
-        run:
-          pre-commit run --all-filespy migrate
+      # - name: Check Syntax
+      #   run:
+      #     pre-commit run --all-filespy migrate
 
       # - name: Run server
       #   run:
@@ -68,6 +68,6 @@ jobs:
       #   run:
       #     pip install -r requirements.txt
 
-      # - name: Check Syntax
-      #   run:
-      #     pre-commit run --all-files
+      - name: Check Syntax
+        run:
+          pre-commit run --all-files
