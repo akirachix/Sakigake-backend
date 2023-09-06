@@ -34,7 +34,8 @@ jobs:
         
     - name: Check Syntax
       run: |
-        pre-commit.config.yaml
+        pre-commit run --all-files
+        chmod +x pre-commit.config.yaml
         
     - name: Run Migrations
       run: python3 manage.py migrate
