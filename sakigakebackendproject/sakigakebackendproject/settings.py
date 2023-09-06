@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'sakigake',        
         'PASSWORD': 'mzaziconnect',  
         'HOST': 'localhost',    
-        'PORT': '',              
+        'PORT': '5432',              
     }
 }
 
