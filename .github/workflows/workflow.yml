@@ -26,21 +26,21 @@ jobs:
         python-version: '3.10'
     
         
-    # - name: Install dependencies
-    #   run: |
-    #     pip install -r requirements.txt
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
     
-    # - name: Install requirements
-    #   run:
-    #     pip install -r requirements.txt
+    - name: Install requirements
+      run:
+        pip install -r requirements.txt
         
-    # - name: Check Syntax
-    #   run: |
-    #     pre-commit run --all-files
+    - name: Check Syntax
+      run: |
+        pre-commit run --all-files
         
-    # - name: Run Migrations
-    #   run: python3 manage.py migrate
+    - name: Run Migrations
+      run: python3 manage.py migrate
       
-    # - name: Run tests
-    #   run:
-    #     python manage.py test
+    - name: Run tests
+      run:
+        python manage.py test
