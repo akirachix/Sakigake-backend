@@ -31,9 +31,10 @@ jobs:
 
     - name: Install pre-commit
       run: pip install pre-commit
-
-    - name: Run pre-commit hooks
-      run: pre-commit run --all-files
+        
+    - name: Check Syntax
+      run: |
+        pre-commit.config.yaml
         
     - name: Run Migrations
       run: python3 manage.py migrate
