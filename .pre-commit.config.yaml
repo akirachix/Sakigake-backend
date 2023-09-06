@@ -1,5 +1,5 @@
 default_language_version:
-  python: python3.8
+  python: python3.9
 default_stages: [commit, push]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -14,7 +14,7 @@ repos:
       - id: bandit
         args: ['-iii', '-ll']
   - repo: https://github.com/PyCQA/flake8
-    rev: 3.8.4
+    rev: 3.10.4
     hooks:
       - id: flake8
   - repo: https://github.com/asottile/seed-isort-config
