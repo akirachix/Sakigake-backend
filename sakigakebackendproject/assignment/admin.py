@@ -1,8 +1,8 @@
 from django.contrib import admin
-from sakigakebackendproject.assignment.models import Assignment
+from assignment.models import Assignment
 
 class AssignmentAdmin(admin.ModelAdmin):
-    list_display = ('teacher,subject,homework,resources')
+    list_display = ('homework','resources')
 
 admin.site.register(Assignment,AssignmentAdmin )
 
