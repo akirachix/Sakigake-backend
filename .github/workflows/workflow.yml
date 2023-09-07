@@ -31,10 +31,6 @@ jobs:
     - name: Install requirements 
       run: pip install -r requirements.txt
 
-    - name: Check Syntax 
-      run: pre-commit run --all-files
-
-
     - name: Install pre-commit
       run: pip install pre-commit
         
@@ -48,4 +44,3 @@ jobs:
       run:
         python manage.py test
 
-        
