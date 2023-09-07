@@ -31,19 +31,21 @@ jobs:
     - name: Install requirements 
       run: pip install -r requirements.txt
 
-    # - name: Check Syntax 
-    #   run: pre-commit run --all-files
+    - name: Check Syntax 
+      run: pre-commit run --all-files
 
 
-    # - name: Install pre-commit
-    #   run: pip install pre-commit
+    - name: Install pre-commit
+      run: pip install pre-commit
         
-    # - name: Check Syntax
-    #   run: pre-commit run --all-files
+    - name: Check Syntax
+      run: pre-commit run --all-files
         
-    # - name: Run Migrations
-    #   run: python3 manage.py migrate
+    - name: Run Migrations
+      run: python3 manage.py migrate
       
-    # - name: Run tests
-    #   run:
-    #     python manage.py test
+    - name: Run tests
+      run:
+        python manage.py test
+
+        
