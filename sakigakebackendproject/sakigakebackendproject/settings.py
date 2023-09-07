@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'teachers',
+    'subjects',
 ]
 
 MIDDLEWARE = [
@@ -78,13 +80,13 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mzaziconnect',      
-        'USER': 'sakigake',        
-        'PASSWORD': 'mzaziconnect',  
-        'HOST': 'localhost',    
-        'PORT': '5432',              
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'your_database_name',
+        'USER': 'your_database_user',
+        'PASSWORD': 'your_database_password',
+        'HOST': 'localhost',  # Or your PostgreSQL server host
+        'PORT': '5432',      # The default PostgreSQL port
     }
 }
 
