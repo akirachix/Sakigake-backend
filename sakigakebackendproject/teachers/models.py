@@ -6,7 +6,7 @@ from django.db import models
 
 
 class Teacher(models.Model):
-    school = models.ForeignKey('School', on_delete=models.CASCADE)
+    # school = models.ForeignKey('School', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField()
