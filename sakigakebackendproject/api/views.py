@@ -1,45 +1,41 @@
-from django.test import TestCase
-from rest_framework.test import APIClient
-from rest_framework import status
+from django.shortcuts import render
+from api.serializers import AssignmentSerializer, NotificationSerializer
 from assignment.models import Assignment
 from notification.models import Notification
+from rest_framework.response import Response
+from rest_framework import status
 
-class AssignmentViewTests(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.assignment_data = {'title': 'Test Assignment', 'description': 'Test Description'}
+from rest_framework.views import APIView
 
-    def test_create_assignment(self):
-        response = self.client.post('/assignments/', self.assignment_data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+class AssignmentView(APIView):
+    def get(self, request):
+        assignment = Assignment.objects.all()
+        serializer = AssignmentSerializer(assignment, many = True)
+        return Response(serializer.data)
+    def post(self, request):
+        serializer = AssignmentSerializer(data = request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_400)
+    
+    def delete(self, request, id, format=None):
+        assignment = Assignment.objects.get(id=id)
+        assignment.delete()
+        return Response("Assignment Removed from the database", status= status.HTTP_204_NO_CONTENT)
+    
+class NotificationView(APIView):
 
-    def test_get_assignments(self):
-        Assignment.objects.create(title='Assignment 1', description='Description 1')
-        Assignment.objects.create(title='Assignment 2', description='Description 2')
-
-        response = self.client.get('/assignments/')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 2)
-
-    def test_delete_assignment(self):
-        assignment = Assignment.objects.create(title='Assignment to delete', description='Description to delete')
-        response = self.client.delete(f'/assignments/{assignment.id}/')
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-class NotificationViewTests(TestCase):
-    def setUp(self):
-        self.client = APIClient()
-        self.notification_data = {'message': 'Test Notification'}
-
-    def test_get_notification(self):
-        notification = Notification.objects.create(message='Test Notification Message')
-        response = self.client.get(f'/notifications/{notification.id}/')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Test Notification Message')
-
-    def test_update_notification(self):
-        notification = Notification.objects.create(message='Initial Message')
-        updated_data = {'message': 'Updated Message'}
-        response = self.client.put(f'/notifications/{notification.id}/', updated_data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Updated Message')
+    def get(self, request, id, format=None):
+        notification = Notification.objects.get(id=id)
+        serializer = NotificationSerializer(notification)
+        return Response(serializer.data)
+    def put(self, request, id, format=None):
+        notification = Notification.objects.get(id=id)
+        serializer = Notification(notification, request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status = status.HTTP_400)
+    
+    
