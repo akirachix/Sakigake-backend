@@ -12,5 +12,5 @@ class Assignment(models.Model):
     date_updated = models.DateTimeField()
 
     def __str__(self):
-        return self.resources
+        return self.title
 
