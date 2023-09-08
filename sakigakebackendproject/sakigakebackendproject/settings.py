@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'parents',
     'students',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -76,23 +78,16 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mzaziconnect',      
-        'USER': 'sakigake',        
-        'PASSWORD': 'mzaziconnect',  
-        'HOST': 'localhost',    
-        'PORT': '5432',              
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mzaziconnect',
+        'USER': 'sakigakeproject',
+        'PASSWORD': 'mzaziconnect',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
 }
-
-
-
-
 
 
 

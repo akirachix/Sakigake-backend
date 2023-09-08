@@ -10,7 +10,8 @@ class Parent(models.Model):
     password = models.CharField(max_length=128) 
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    students = models.ManyToManyField(Student, on_delete=models.CASCADE, related_name='parents')
+    students = models.ManyToManyField(Student)
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

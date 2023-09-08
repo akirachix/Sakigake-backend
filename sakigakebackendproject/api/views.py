@@ -4,6 +4,7 @@ from parents.models import Parent
 from rest_framework.response import Response
 from rest_framework import status
 from serializers import StudentsSerializer, ParentsSerializer
+from rest_framework.views import APIView
 
 
 # Create your views here.
@@ -19,6 +20,18 @@ class StudentsListView(APIView):
             serializer.save()
             return Response(serializer.data, status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400)
+
+ 
+    
+class AddStudentView(APIView):
+    def post(self, request, format=None):
+        student_data = request.data
+        serializer = StudentsSerializer(data=student_data)
+        if serializer.is_valid():
+            serializer.save() 
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
     
 class StudentDetailView(APIView):
     def get(self, request, id, format=None):
@@ -38,6 +51,7 @@ class StudentDetailView(APIView):
         students = Student.objects.get(id=id)
         students.delete()
         return Response("Student Removed ", status= status.HTTP_204_NO_CONTENT)
+    
 
 
 class ParentsListView(APIView):
@@ -53,9 +67,8 @@ class ParentsListView(APIView):
             return Response(serializer.data, status.HTTP_201_CREATED)
         return Response(serializer.errors, status = status.HTTP_400)
     
-
-
     
+
 class ParentDetailView(APIView):
     def get(self, request, id, format=None):
         parents = Parent.objects.get(id=id)
@@ -74,3 +87,5 @@ class ParentDetailView(APIView):
         parents = Parent.objects.get(id=id)
         parents.delete()
         return Response("Parent Removed ", status= status.HTTP_204_NO_CONTENT)
+
+
