@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'assignment',
     'notification',
     'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
