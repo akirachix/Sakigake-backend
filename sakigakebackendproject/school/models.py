@@ -9,7 +9,6 @@ class School(models.Model):
     location = models.CharField(max_length=200)
     subjects = models.CharField()  
     school_code = models.CharField(max_length=20, unique=True)
-    password = models.CharField(max_length=128)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
