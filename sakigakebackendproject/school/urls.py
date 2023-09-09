@@ -1,5 +1,5 @@
-from django.urls  import path
 from .views import SchoolListView ,DetailView 
+from django.urls  import path
 
 
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'school',
     'grade',
     'rest_framework',
+    'phonenumber_field',
 
 ]
 
