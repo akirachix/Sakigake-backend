@@ -3,7 +3,7 @@ from students.models import Student
 from parents.models import Parent
 from rest_framework.response import Response
 from rest_framework import status
-from serializers import StudentsSerializer, ParentsSerializer
+from .serializers import StudentsSerializer, ParentsSerializer
 from rest_framework.views import APIView
 
 

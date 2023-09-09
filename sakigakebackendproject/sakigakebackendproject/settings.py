@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'students',
     'rest_framework',
     'api',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
@@ -78,11 +79,12 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mzaziconnect',
-        'USER': 'sakigakeproject',
+        'USER': 'sakigake',
         'PASSWORD': 'mzaziconnect',
         'HOST': 'localhost',
         'PORT': '5432',
