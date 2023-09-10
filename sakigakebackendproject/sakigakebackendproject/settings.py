@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'parents',
     'students',
     'rest_framework',
-    'api',
     'phonenumber_field',
 ]
 

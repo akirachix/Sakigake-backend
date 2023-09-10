@@ -1,14 +1,14 @@
 from django.db import models
-# from phonenumbers import PhoneNumberField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Parent(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField()
-    # phone_number = models.PhoneNumberField(blank=True, null=True)
-    date_added = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+    phone_number = models.PhoneNumberField(blank=True, null=True)
+    date_added_at = models.DateTimeField(auto_now_add=True)
+    date_updated_at= models.DateTimeField(auto_now=True)
     
 
 

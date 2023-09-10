@@ -41,5 +41,3 @@ class StudentDetailView(APIView):
         students = Student.objects.get(id=id)
         students.delete()
         return Response("Student Removed ", status= status.HTTP_204_NO_CONTENT)
-    
-
