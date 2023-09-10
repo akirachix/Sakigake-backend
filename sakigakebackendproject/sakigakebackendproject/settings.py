@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -97,6 +98,19 @@ DATABASES = {
 
 
 
+import firebase_admin
+from firebase_admin import credentials
+
+SERVICE_ACCOUNT_KEY_PATH = os.path.join(BASE_DIR, 'sakigakebackendproject/service-account.json')
+
+if os.path.exists(SERVICE_ACCOUNT_KEY_PATH):
+
+
+ cred = credentials.Certificate(SERVICE_ACCOUNT_KEY_PATH)
+ firebase_admin.initialize_app(cred)
+
+else:
+    print("Service account JSON file not found.")
 
 
 # Password validation

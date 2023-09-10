@@ -1,5 +1,5 @@
 from django.urls import path
-from api.views import AssignmentView
+from views import AssignmentView
 
 
 urlpatterns = [
