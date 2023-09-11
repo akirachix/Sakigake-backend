@@ -1,9 +1,10 @@
 from django.urls import path
-from views import AssignmentView
+
+from assignment.views import AssigmentView, AssignmentDetailView
+
 
 
 urlpatterns = [
-    path('assignments/', AssignmentView.as_view()),
-    path('assignments/<int:id>/', AssignmentView.as_view()),
-    
+    path('assignments/', AssigmentView.as_view() , name="assignment"),
+    path('assignments/<int:id>/',AssignmentDetailView.as_view() , name="assignment_detail"), 
 ]

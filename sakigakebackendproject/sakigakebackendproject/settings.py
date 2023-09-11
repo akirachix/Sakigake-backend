@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'assignment',
-    'notification',
+    'shop',
     'rest_framework',
-    'api',
+    'phonenumber_field',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
