@@ -11,7 +11,7 @@ class SchoolListView(APIView):
             serializer = SchoolSerializer(schools, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response("An error occurred while fetching schools", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": "An error occurred while fetching schools"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def post(self, request):
         try:
@@ -20,24 +20,22 @@ class SchoolListView(APIView):
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
             
-           
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-           
-            return Response("An error occurred while creating a new school", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": "An error occurred while creating a new school"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class DetailView(APIView):
-    def get(self, request, id, format=None):
+    def get(self, request, school_id, format=None):
         try:
-            school = School.objects.get(id=id)
+            school = School.objects.get(school_id=school_id)
             serializer = SchoolSerializer(school)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except School.DoesNotExist:
-            return Response("School not found", status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "School not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    def put(self, request, id, format=None):
+    def put(self, request, school_id, format=None):
         try:
-            school = School.objects.get(id=id)
+            school = School.objects.get(school_id=school_id)
             serializer = SchoolSerializer(school, data=request.data) 
             if serializer.is_valid():
                 serializer.save()
@@ -45,12 +43,41 @@ class DetailView(APIView):
             
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except School.DoesNotExist:
-            return Response("School not found", status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "School not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    def delete(self, request, id, format=None):
+    def delete(self, request, school_id, format=None):
         try:
-            school = School.objects.get(id=id)
+            school = School.objects.get(school_id=school_id)
             school.delete()
-            return Response("School deleted", status=status.HTTP_204_NO_CONTENT)
+            return Response({"message": "School deleted"}, status=status.HTTP_204_NO_CONTENT)
         except School.DoesNotExist:
-            return Response("School not found", status=status.HTTP_404_NOT_FOUND)
+            return Response({"error": "School not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

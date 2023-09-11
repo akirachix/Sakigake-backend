@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'school',
-    'grade',
     'rest_framework',
     'phonenumber_field',
 
@@ -89,7 +88,8 @@ DATABASES = {
         'USER': 'sakigake',        
         'PASSWORD': 'mzaziconnect',  
         'HOST': 'localhost',    
-        'PORT': '5432',              
+        'PORT': '5432',      
+            
     }
 }
 
