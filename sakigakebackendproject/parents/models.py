@@ -6,7 +6,7 @@ class Parent(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField()
-    phone_number = models.PhoneNumberField(blank=True, null=True)
+    phone_number = PhoneNumberField(unique=True, region='KE',  default='')
     date_added_at = models.DateTimeField(auto_now_add=True)
     date_updated_at= models.DateTimeField(auto_now=True)
     
