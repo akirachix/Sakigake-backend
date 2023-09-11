@@ -7,6 +7,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Teacher(models.Model):
+    # user = models.OneToOneField(User, on_delete=models.PROTECT,null=True)
     # school = models.ForeignKey('School', on_delete=models.CASCADE)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
