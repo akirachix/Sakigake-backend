@@ -41,7 +41,26 @@ INSTALLED_APPS = [
     'students',
     'rest_framework',
     'phonenumber_field',
+    'drf_yasg',
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        },
+    },
+    'LOGIN_URL': 'admin:login', 
+    'LOGOUT_URL': 'admin:logout',  
+    'USE_SESSION_AUTH': False,
+}
+
+# AUTHENTICATION_BACKENDS = [
+#     'parents.custom_auth_backend.PhonePasswordAuthBackend',
+# ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

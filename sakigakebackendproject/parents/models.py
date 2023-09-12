@@ -1,8 +1,11 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.contrib.auth.models import User
 
 
 class Parent(models.Model):
+
+    # user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField()
