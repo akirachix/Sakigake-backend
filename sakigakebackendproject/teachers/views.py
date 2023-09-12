@@ -4,6 +4,7 @@ from rest_framework import status
 from .models import Teacher
 from .serializers import TeacherSerializer
 
+
 class TeacherListView(APIView):
     def get(self, request):
         try:

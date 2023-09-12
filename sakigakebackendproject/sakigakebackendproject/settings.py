@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'subjects',
     'teachers',
-    # 'api',
+    'drf_yasg',
+    'rest_framework.authtoken',
     # 'rest_framework_swagger',    
-    'rest_framework',               
-    # 'drf_yasg'                    
+    'rest_framework',                                
 ]
 
 MIDDLEWARE = [
