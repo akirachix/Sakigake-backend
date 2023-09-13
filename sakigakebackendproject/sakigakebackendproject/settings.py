@@ -105,7 +105,7 @@ DATABASES = {
         'PASSWORD': 'mzaziconnect',  
         'HOST': 'localhost',    
         'PORT': '5432',              
-    }
+    },
 }
 
 
