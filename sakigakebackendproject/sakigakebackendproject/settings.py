@@ -106,7 +106,10 @@ DATABASES = {
         'USER': 'sakigake',        
         'PASSWORD': 'mzaziconnect',  
         'HOST': 'localhost',    
-        'PORT': '5432',              
+        'PORT': '5432',
+        'TEST': {
+            'NAME': 'comments.tests',
+         },              
     }
 }
 

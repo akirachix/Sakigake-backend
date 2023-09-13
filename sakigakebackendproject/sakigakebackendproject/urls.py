@@ -24,7 +24,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="MzaziConnect API",
         default_version='v1',
-        description="MzaziConnect students and parents models endpoints",
+        description="MzaziConnect parents and teacher comment model",
         terms_of_service="https://www.yourapp.com/terms/",
         contact=openapi.Contact(email="contact@yourapp.com"),
         license=openapi.License(name="Your License"),
