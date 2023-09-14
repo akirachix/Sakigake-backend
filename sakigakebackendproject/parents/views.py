@@ -4,9 +4,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import ParentsSerializer
 from rest_framework.views import APIView
-from django.contrib.auth import authenticate, login
+# from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-
 
 
 
@@ -47,13 +46,13 @@ class ParentDetailView(APIView):
     
 
 
-class ParentLoginView(APIView):
-    def post(self, request):
-        phone_number = request.data.get('phone_number')
-        password = request.data.get('password')
-        user = authenticate(request, phone_number=phone_number, password=password)
-        if user is not None:
-            login(request, user)
-            return Response({'Logged In Successfully'}, status=status.HTTP_200_OK)
-        else:
-            return Response({'error': 'Authentication failed'}, status=status.HTTP_401_UNAUTHORIZED)
+# class ParentLoginView(APIView):
+#     def post(self, request):
+#         phone_number = request.data.get('phone_number')
+#         password = request.data.get('password')
+#         user = authenticate(request, phone_number=phone_number, password=password)
+#         if user is not None:
+#             login(request, user)
+#             return Response({'Logged In Successfully'}, status=status.HTTP_200_OK)
+#         else:
+#             return Response({'error': 'Authentication failed'}, status=status.HTTP_401_UNAUTHORIZED)

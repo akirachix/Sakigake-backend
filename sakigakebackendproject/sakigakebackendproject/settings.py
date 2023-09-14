@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'students',
     'rest_framework',
     'phonenumber_field',
+    # 'test_without_migrations',
     'drf_yasg',
 ]
 
@@ -103,6 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'mzaziconnect',
         'USER': 'sakigake',
+
         'PASSWORD': 'mzaziconnect',
         'HOST': 'localhost',
         'PORT': '5432',
