@@ -8,8 +8,7 @@ from .serializers import ShopSerializer
 class ShopTests(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.shop_data = {"name": "Test Shop", "location": "Test Location"}
-        self.shop = Shop.objects.create(name="Existing Shop", location="Existing Location")
+        self.shop_data = {"name": "Ted's hardware", "location": "Limuru"}
 
     def test_create_shop(self):
         response = self.client.post(reverse("shop-list"), self.shop_data, format="json")
@@ -31,3 +30,4 @@ class ShopTests(TestCase):
     def test_delete_shop(self):
         response = self.client.delete(reverse("shop-detail", args=[self.shop.id]))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+ 

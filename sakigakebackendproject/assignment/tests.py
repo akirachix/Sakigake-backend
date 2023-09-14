@@ -7,8 +7,8 @@ from .models import Assignment
 class AssignmentTests(TestCase):
     def setUp(self):
         self.client = APIClient()
-        self.assignment_data = {"title": "Test Assignment", "description": "Test Description"}
-        self.assignment = Assignment.objects.create(title="Existing Assignment", description="Existing Description")
+        self.assignment_data = {"title": "", "description": ""}
+        self.assignment = Assignment.objects.create(title="", description="")
 
     def test_create_assignment(self):
         response = self.client.post(reverse("assignment-list"), self.assignment_data, format="json")
