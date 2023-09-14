@@ -42,14 +42,3 @@ class ParentDetailView(APIView):
         parents.delete()
         return Response("Parent Removed ", status= status.HTTP_204_NO_CONTENT)
     
-
-
-    # class AddParentView(APIView):
-    # def post(self, request, format=None):
-    #     parents_data = request.data
-    #     serializer = ParentsSerializer(data=parents_data)
-    #     if serializer.is_valid():
-    #         serializer.save() 
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
-    
