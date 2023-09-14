@@ -1,34 +1,42 @@
 import random
 import string
-import phonenumbers
 from django.core.exceptions import ValidationError
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.utils import timezone 
+from django.utils import timezone
+from multiselectfield import MultiSelectField
+from django.core.validators import validate_email
+from multiselectfield.validators import MaxValueMultiFieldValidator
+from multiselectfield import MultiSelectField
 
-def validate_phone_number(value):
-    try:
-        parsed_number = phonenumbers.parse(value, None)
-        if not phonenumbers.is_valid_number(parsed_number):
-            raise ValidationError("Invalid phone number")
-    except phonenumbers.phonenumberutil.NumberFormatException:
-        raise ValidationError("Invalid phone number format")
 
 class School(models.Model):
+    GRADE_CHOICES = (
+        ('1', 'Grade 1'),
+        ('2', 'Grade 2'),
+        ('3', 'Grade 3'),
+        ('4', 'Grade 4'),
+        ('5', 'Grade 5'),
+        ('6', 'Grade 6'),
+    )
+
     school_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    email = models.EmailField()
-    subjects = models.CharField(max_length=50 , default='')
-    phone_number = PhoneNumberField(blank=True, null=True, validators=[validate_phone_number])
+    email = models.EmailField(validators=[validate_email])
+    subjects = models.CharField(max_length=50, default='')
+    grades = MultiSelectField(choices=GRADE_CHOICES, validators=[MaxValueMultiFieldValidator(6)]) 
+  
+    phone_number = PhoneNumberField(blank=True, null=True)
     website = models.URLField()
     location = models.CharField(max_length=200)
     school_code = models.CharField(max_length=20, unique=True, blank=True, null=True)
     date_added_at = models.DateTimeField(default=timezone.now, verbose_name="Date Added")
     date_updated_at = models.DateTimeField(auto_now=True, verbose_name="Date Updated")
 
-    
+    def __str__(self):
+        return self.name
+
     def generate_school_code(self):
-     
         cleaned_name = self.name.replace(" ", "").capitalize()
 
         if len(cleaned_name) < 4:
@@ -46,4 +54,3 @@ class School(models.Model):
         if not self.school_code:
             self.school_code = self.generate_school_code()
         super().save(*args, **kwargs)
-
