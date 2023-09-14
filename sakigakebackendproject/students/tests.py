@@ -49,7 +49,7 @@ class StudentDetailViewTest(APITestCase):
         self.assertFalse(Student.objects.filter(id=self.student.id).exists())
    
     def test_delete_invalid_student(self):
-        non_existent_student_id = 9999
+        non_existent_student_id = 54
         self.url = f'/students/{non_existent_student_id}/'
         response = self.client.delete(self.url)
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
