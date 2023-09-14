@@ -1,7 +1,6 @@
-# name: Django CI/CD
+# name: Django CI/CD# on:
+#  push:
 
-# on:
-#   push:
 #     branches:
 #       - main
 #       - staging
@@ -20,6 +19,13 @@
 #     - name: Checkout code
 #       uses: actions/checkout@v2
     
+# jobs:
+#   build:
+#     runs-on: ubuntu-20.04
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+
 #     - name: Setup Python
 #       uses: actions/setup-python@v2
 #       with:
@@ -33,17 +39,3 @@
 
 #     # - name: Check Syntax 
 #     #   run: pre-commit run --all-files
-
-
-#     # - name: Install pre-commit
-#     #   run: pip install pre-commit
-        
-#     # - name: Check Syntax
-#     #   run: pre-commit run --all-files
-        
-#     # - name: Run Migrations
-#     #   run: python3 manage.py migrate
-      
-#     # - name: Run tests
-#     #   run:
-#     #     python manage.py test

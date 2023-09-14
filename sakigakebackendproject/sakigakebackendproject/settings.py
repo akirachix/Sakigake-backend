@@ -9,9 +9,15 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+<<<<<<< HEAD
 
 import os
+=======
+>>>>>>> b8cca4b474e0a221d6680d1b42df7e35686a365f
 from pathlib import Path
+import os
+print(os.environ.get('PYTHONPATH'))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,11 +44,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     'assignment',
     'shop',
     'rest_framework',
     'phonenumber_field',
     'drf_yasg',
+=======
+    'comments',  
+    'rest_framework',
+    'test_without_migrations',
+    'school',
+    'accounts',
+    'parents',
+    'students',
+    'subjects',
+    'teachers',
+>>>>>>> b8cca4b474e0a221d6680d1b42df7e35686a365f
 ]
 
 SWAGGER_SETTINGS = {
@@ -95,9 +113,12 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
+<<<<<<< HEAD
 
 
 import os
+=======
+>>>>>>> b8cca4b474e0a221d6680d1b42df7e35686a365f
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -108,6 +129,7 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -128,6 +150,8 @@ else:
     print("Service account JSON file not found.")
 
 
+=======
+>>>>>>> b8cca4b474e0a221d6680d1b42df7e35686a365f
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -168,3 +192,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+   
+}
