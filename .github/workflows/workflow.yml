@@ -1,3 +1,6 @@
+# name: Django CI/CD
+# on:
+#   push:
 # name: Django CI/CD# on:
 #  push:
 #     branches:
@@ -9,6 +12,15 @@
 #       - main
 #       - staging
 #       - dev
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-20.04
+    
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v2
+    
 # jobs:
 #   build:
 #     runs-on: ubuntu-20.04
@@ -22,16 +34,22 @@
 #     - name: Install requirements
 #       run:
 #         pip freeze>requirements.txt
-#     - name: Install requirements
+#     - name: Install requirements 
 #       run: pip install -r requirements.txt
-#     # - name: Check Syntax
+
+#     # - name: Check Syntax 
 #     #   run: pre-commit run --all-files
+
+
 #     # - name: Install pre-commit
 #     #   run: pip install pre-commit
+        
 #     # - name: Check Syntax
 #     #   run: pre-commit run --all-files
+        
 #     # - name: Run Migrations
 #     #   run: python3 manage.py migrate
+      
 #     # - name: Run tests
 #     #   run:
 #     #     python manage.py test
