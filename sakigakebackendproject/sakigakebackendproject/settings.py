@@ -100,6 +100,14 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
+
+
+
+import os
+
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
