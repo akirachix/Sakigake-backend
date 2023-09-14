@@ -20,7 +20,6 @@ class CommentAPITestCase(TestCase):
         self.assertEqual(Comment.objects.get().commentor, 'Alice Williams')
     
     
-    
         
     def test_create_comment_missing_data(self):
         data = {
