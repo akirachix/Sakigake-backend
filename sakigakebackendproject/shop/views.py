@@ -53,7 +53,7 @@ class ShopDetailView(APIView):
         try:
             shop = Shop.objects.get(id=id)
             shop.delete()
-            return Response ({"message":"Shop deleted"}, status=status.HTTP_404_NOT_FOUND)
+            return Response ({"message":"Shop deleted"}, status=status.HTTP_410_GONE)
         except Shop.DoesNotExist:
             return Response({"error":"Shop not found"},status=status.HTTP_404_NOT_FOUND)
         
