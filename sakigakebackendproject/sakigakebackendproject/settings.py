@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+print(os.environ.get('PYTHONPATH'))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'test_without_migrations',
     'school',
     'rest_framework',
@@ -51,6 +55,12 @@ INSTALLED_APPS = [
  
    
 
+    'comments',  
+    'api',
+    'rest_framework',
+    'drf_yasg',
+
+
 ]
 # AUTH_USER_MODEL = 'user.CustomUser'
 
@@ -60,6 +70,20 @@ INSTALLED_APPS = [
 #     ],
 #     # Other settings...
 # }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        },
+    },
+    'LOGIN_URL': 'admin:login', 
+    'LOGOUT_URL': 'admin:logout',  
+    'USE_SESSION_AUTH': False,
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -96,7 +120,15 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
+
 import os
+
+
+
+
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -117,8 +149,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
-
-
 
 
 
