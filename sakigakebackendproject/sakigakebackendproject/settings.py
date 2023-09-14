@@ -44,14 +44,9 @@ INSTALLED_APPS = [
     'parents',
     'students',
     'rest_framework',
-    
     'test_without_migrations',
-    
-
     'school',
     'accounts',
-    'comments',  
-    'rest_framework',
 ]
 
 SWAGGER_SETTINGS = {
