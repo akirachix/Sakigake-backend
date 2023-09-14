@@ -62,3 +62,5 @@ class UserDetailAPIView(APIView):
         if request.method == "POST":
             request.user.auth_token.delete()
         return Response({"Message": "You are logged out"}, status=status.HTTP_200_OK)
+
+
