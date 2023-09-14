@@ -44,10 +44,14 @@ INSTALLED_APPS = [
     'parents',
     'students',
     'rest_framework',
-    'drf_yasg',
+    
+    'test_without_migrations',
+    
+
     'school',
     'accounts',
-
+    'comments',  
+    'rest_framework',
 ]
 
 SWAGGER_SETTINGS = {
@@ -97,7 +101,7 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -108,10 +112,6 @@ DATABASES = {
         'PORT': '5432',              
     }
 }
-
-
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
