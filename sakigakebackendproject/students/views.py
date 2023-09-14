@@ -23,6 +23,7 @@ class AddStudentView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 class StudentDetailView(APIView):
     http_method_names = ['get', 'put', 'delete'] 
