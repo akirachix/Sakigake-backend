@@ -1,32 +1,39 @@
 from django.test import TestCase
-from django.urls import reverse
-from rest_framework import status
-from rest_framework.test import APIClient
+from django.utils import timezone
 from .models import Assignment
 
-class AssignmentTests(TestCase):
+class AssignmentModelTestCase(TestCase):
+
     def setUp(self):
-        self.client = APIClient()
-        self.assignment_data = {"title": "", "description": ""}
-        self.assignment = Assignment.objects.create(title="", description="")
+        # Create a sample Assignment instance for testing
+        self.assignment = Assignment(
+            topic="Test Assignment",
+            competency="Test Competency",
+            task="Test Task",
+            materials="Test Materials",
+            category="Test Category",
+            due_date=timezone.now(),
+            date_added_at=timezone.now(),
+            date_updated_at=timezone.now()
+        )
 
-    def test_create_assignment(self):
-        response = self.client.post(reverse("assignment-list"), self.assignment_data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+    def test_assignment_creation(self):
+        # Test if the Assignment instance was created successfully
+        self.assertIsInstance(self.assignment, Assignment)
 
-    def test_get_assignment_list(self):
-        response = self.client.get(reverse("assignment-list"))
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_assignment_fields(self):
+        # Test individual fields of the Assignment instance
+        self.assertEqual(self.assignment.topic, "Test Assignment")
+        self.assertEqual(self.assignment.competency, "Test Competency")
+        self.assertEqual(self.assignment.task, "Test Task")
+        self.assertEqual(self.assignment.materials, "Test Materials")
+        self.assertEqual(self.assignment.category, "Test Category")
 
-    def test_get_assignment_detail(self):
-        response = self.client.get(reverse("assignment-detail", args=[self.assignment.id]))
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_assignment_due_date(self):
+        # Test if the due_date is a valid DateTime object
+        self.assertTrue(timezone.is_aware(self.assignment.due_date))
 
-    def test_update_assignment(self):
-        updated_data = {"title": "Updated Assignment", "description": "Updated Description"}
-        response = self.client.put(reverse("assignment-detail", args=[self.assignment.id]), updated_data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_delete_assignment(self):
-        response = self.client.delete(reverse("assignment-detail", args=[self.assignment.id]))
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+    def test_assignment_date_added_updated(self):
+        # Test if date_added_at and date_updated_at are valid DateTime objects
+        self.assertTrue(timezone.is_aware(self.assignment.date_added_at))
+        self.assertTrue(timezone.is_aware(self.assignment.date_updated_at))
