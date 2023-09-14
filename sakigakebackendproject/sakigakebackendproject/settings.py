@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comments',  
+    'comments', 
+    'parents',
+    'students',
+    'schools', 
     'api',
     'rest_framework',
     'drf_yasg',
@@ -97,10 +100,7 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-
-
-
-
+import os
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -111,9 +111,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
-
-
-
 
 
 
