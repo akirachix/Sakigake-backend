@@ -27,6 +27,7 @@ schema_view = get_schema_view(
         title="MzaziConnect API",
         default_version='v1',
         description="MzaziConnect students and parents models endpoints",
+        description="MzaziConnect parents and teacher comment model",
         terms_of_service="https://www.yourapp.com/terms/",
         contact=openapi.Contact(email="contact@yourapp.com"),
         license=openapi.License(name="Your License"),
@@ -37,7 +38,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("comments/", include ("comments.urls")),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path("students/", include("students.urls")),
     path("parents/", include("parents.urls")),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

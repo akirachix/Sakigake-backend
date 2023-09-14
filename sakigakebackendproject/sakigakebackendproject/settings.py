@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+print(os.environ.get('PYTHONPATH'))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'comments', 
     'parents',
     'students',
+    'schools', 
+    'api',
     'rest_framework',
-    'phonenumber_field',
-    # 'test_without_migrations',
     'drf_yasg',
+
 ]
 
 SWAGGER_SETTINGS = {
@@ -57,10 +62,6 @@ SWAGGER_SETTINGS = {
     'LOGOUT_URL': 'admin:logout',  
     'USE_SESSION_AUTH': False,
 }
-
-# AUTHENTICATION_BACKENDS = [
-#     'parents.custom_auth_backend.PhonePasswordAuthBackend',
-# ]
 
 
 MIDDLEWARE = [
