@@ -39,13 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comments', 
-    'parents',
-    'students',
+    'comments',  
     'rest_framework',
     'test_without_migrations',
     'school',
     'accounts',
+    'parents',
+    'students',
+    'subjects',
+    'teachers',
 ]
 
 SWAGGER_SETTINGS = {
@@ -95,6 +97,7 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 
 
 DATABASES = {
