@@ -20,19 +20,19 @@ class Assignment(models.Model):
     date_added_at = models.DateTimeField(default=None, null=True, blank=True)
     date_updated_at = models.DateTimeField(default=None, null=True, blank=True)
 
-    # def send_push_notification(self):
-    #     message = messaging.Message(
-    #         notification = message.Notification(
-    #             title = {self.topic},
-    #             body = {self.task},
-    #         ),
-    #         topic = "assignments"
-    #     )
-    #     response = messaging.send(message)
-    #     print("Successfully sent notification:", response)
-    # def save(self):
-    #  super().save()
-    #  self.send_push_notification()
+    def send_push_notification(self):
+        message = messaging.Message(
+            notification = message.Notification(
+                title = {self.topic},
+                body = {self.task},
+            ),
+            topic = "assignments"
+        )
+        response = messaging.send(message)
+        print("Successfully sent notification:", response)
+    def save(self):
+     super().save()
+     self.send_push_notification()
 
 
     def __str__(self):
