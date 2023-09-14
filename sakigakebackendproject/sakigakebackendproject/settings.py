@@ -45,13 +45,8 @@ INSTALLED_APPS = [
     'teachers',
     'drf_yasg',
     'rest_framework.authtoken',
-    # 'rest_framework_swagger',    
-    'rest_framework',                                
-
     'comments',  
-    'api',
     'rest_framework',
-    'drf_yasg',
 
 ]
 
