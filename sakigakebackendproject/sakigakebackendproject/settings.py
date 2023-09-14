@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from pathlib import Path
 import os
 print(os.environ.get('PYTHONPATH'))
@@ -40,14 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'subjects',
-    'teachers',
-    'drf_yasg',
-    'rest_framework.authtoken',
     'comments',  
     'rest_framework',
-
+    'test_without_migrations',
+    'school',
+    'accounts',
+    'parents',
+    'students',
+    'subjects',
+    'teachers',
 ]
 
 SWAGGER_SETTINGS = {
@@ -100,11 +100,6 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-
-
-
-
-
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -115,12 +110,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
-
-
-
-
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -161,3 +150,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+   
+}
