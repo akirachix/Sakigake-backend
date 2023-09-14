@@ -37,15 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'test_without_migrations',
+    'test_without_migrations',
     'school',
     'rest_framework',
-    # 'phonenumber_field',
+    'phonenumber_field',
     'drf_yasg',
     # 'grade',
-    # 'rest_framework.authtoken',
-    # 'user',
     'rest_framework.authtoken',
+    # 'user',
+ 
     'accounts',
  
  
@@ -96,43 +96,27 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-
-
-
+import os
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mzaziconnect',      
-        'USER': 'sakigake',        
-        'PASSWORD': 'mzaziconnect',  
-        'HOST': 'localhost',    
-        'PORT': '5432',     
-     
-     'TEST': {
-            'MIRROR': 'default',
-        },
-            
-    },
-    #  'test_sakigake': {
-    #        'ENGINE': 'django.db.backends.postgresql',
-    #        'NAME': 'test_mzaziconnect',
-    #        'USER': 'sakigake',
-    #        'PASSWORD': 'mzaziconnect',
-    #        'HOST': 'localhost',
-    #        'PORT': '5432',
-    #    },
-    #  'TEST': {
-    #        'ENGINE': 'django.db.backends.postgresql',
-    #        'NAME': 'test_mzaziconnect',
-    #        'USER': 'sakigake',
-    #        'PASSWORD': 'mzaziconnect',
-    #        'HOST': 'localhost',
-    #        'PORT': '5432',
-    #    },
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
+    }
 }
-
-
-
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated', 
+        'rest_framework.authentication.TokenAuthentication',
+     ],
+      'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
 
 
 
