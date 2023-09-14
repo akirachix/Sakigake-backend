@@ -3,8 +3,5 @@ myenv/
 db.sqlite3
 cache
 build
-<<<<<<< HEAD
 service-account
-=======
->>>>>>> b8cca4b474e0a221d6680d1b42df7e35686a365f
 .env
