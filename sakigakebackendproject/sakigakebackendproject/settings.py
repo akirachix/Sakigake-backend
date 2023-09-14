@@ -103,9 +103,6 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-import os
-
-
 
 
 DATABASES = {
