@@ -2,7 +2,8 @@ from django.contrib import admin
 from .models import Assignment
 
 class AssignmentAdmin(admin.ModelAdmin):
-    list_display = ('topic','task','competency', 'materials', 'category','due_date')
+    list_display = ('subject','topic','task','competency', 'materials', 'category','due_date',
+                    'date_added_at','date_updated_at')
 
 admin.site.register(Assignment, AssignmentAdmin)
 

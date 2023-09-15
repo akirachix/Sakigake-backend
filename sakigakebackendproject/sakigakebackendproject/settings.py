@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'multiselectfield',
     'assignment',
     'shop',
     'rest_framework',
@@ -52,7 +53,7 @@ INSTALLED_APPS = [
     'accounts',
     'parents',
     'students',
-    'subjects',
+    'subject',
     'teachers',
 ]
 

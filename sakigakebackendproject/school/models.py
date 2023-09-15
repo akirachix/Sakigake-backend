@@ -4,10 +4,11 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
-from multiselectfield import MultiSelectField
 from django.core.validators import validate_email
-from multiselectfield.validators import MaxValueMultiFieldValidator
 from multiselectfield import MultiSelectField
+from django.core.validators import MaxValueValidator
+from multiselectfield.validators import MaxValueMultiFieldValidator
+
 
 
 class School(models.Model):
@@ -20,7 +21,7 @@ class School(models.Model):
         ('6', 'Grade 6'),
     )
 
-    school_id = models.AutoField(primary_key=True)
+    school= models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(validators=[validate_email])
     subjects = models.CharField(max_length=50, default='')
