@@ -6,6 +6,7 @@
 #       - staging
 #       - dev
 
+
     
 # jobs:
 #   build:
@@ -25,5 +26,4 @@
 #     - name: Install requirements 
 #       run: pip install -r requirements.txt
 
-#     # - name: Check Syntax 
-#     #   run: pre-commit run --all-files
+
