@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
+
 from pathlib import Path
 import os
 print(os.environ.get('PYTHONPATH'))
@@ -39,14 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'comments',  
+    'multiselectfield',
+    'assignment',
+    'shop',
     'rest_framework',
+    'phonenumber_field',
+    'drf_yasg',
+    'comments',  
     'test_without_migrations',
     'school',
     'accounts',
     'parents',
     'students',
-    'subjects',
+    'subject',
     'teachers',
 ]
 
@@ -100,6 +107,9 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE'),
@@ -110,6 +120,26 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
+
+
+
+
+
+import firebase_admin
+from firebase_admin import credentials
+
+SERVICE_ACCOUNT_KEY_PATH = os.path.join(BASE_DIR, 'sakigakebackendproject/service-account.json')
+
+if os.path.exists(SERVICE_ACCOUNT_KEY_PATH):
+
+
+ cred = credentials.Certificate(SERVICE_ACCOUNT_KEY_PATH)
+ firebase_admin.initialize_app(cred)
+
+else:
+    print("Service account JSON file not found.")
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
