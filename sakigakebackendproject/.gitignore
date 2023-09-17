@@ -6,3 +6,4 @@ build
 service-account
 .env
 /staticfiles/
+myenv/
