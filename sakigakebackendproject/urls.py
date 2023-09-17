@@ -28,4 +28,6 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),name='schema-redoc'),
     path("comments/", include ("comments.urls")),
     path("accounts/", include ("accounts.urls")),
+    path("parents/",include("parents.urls")),
+    path("students/", include("students.urls")),
 ]
