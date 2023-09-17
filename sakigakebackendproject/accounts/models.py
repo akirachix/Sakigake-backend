@@ -19,13 +19,11 @@ class Teacher(AbstractUser):
     groups = models.ManyToManyField(Group, related_name='teachers')
     user_permissions = models.ManyToManyField(Permission, related_name='teachers')
 
-
-# class Parent(AbstractUser):
-#     first_name = models.CharField(max_length=30)
-#     email = models.EmailField(unique=True)
-#     last_name = models.CharField(max_length=30)
-#     phone_number = PhoneNumberField(unique=True, region='KE')
-#     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
-#     groups = models.ManyToManyField(Group, related_name='parents')
-#     user_permissions = models.ManyToManyField(Permission, related_name='parents')
-
+class Parent(AbstractUser):
+    first_name = models.CharField(max_length=30)
+    email = models.EmailField(unique=True)
+    last_name = models.CharField(max_length=30)
+    phone_number = PhoneNumberField(unique=True, region='KE')
+    created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
+    groups = models.ManyToManyField(Group, related_name='parents')
+    user_permissions = models.ManyToManyField(Permission, related_name='parents')
