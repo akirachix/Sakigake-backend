@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('location', models.CharField(max_length=60)),
                 ('phone_number', phonenumber_field.modelfields.PhoneNumberField(max_length=128, null=True, region=None)),
-                ('category', models.CharField()),
+                ('category', models.CharField(max_length=50)),
             ],
         ),
     ]
