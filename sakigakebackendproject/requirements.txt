@@ -9,7 +9,7 @@ charset-normalizer==3.2.0
 cryptography==41.0.3
 distlib==0.3.7
 dj-database-url==2.1.0
-Django==3.9.18
+Django==3.2.7
 django-bootstrap4==23.2
 django-heroku==0.3.1
 django-multiselectfield==0.1.12
