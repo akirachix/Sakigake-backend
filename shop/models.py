@@ -6,9 +6,9 @@ class Shop(models.Model):
     name = models.CharField(max_length=100)
     location = models.CharField(max_length=60)
     phone_number = PhoneNumberField(null=True)
-    category = models.CharField(max_length=50)
+    # category = models.CharField(max_length=50)
     
     def __str__(self):
-        return self.category
+        return self.name
     
     
