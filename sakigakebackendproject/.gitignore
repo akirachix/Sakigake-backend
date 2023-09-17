@@ -1,8 +1,0 @@
-__pycache__
-myenv/
-db.sqlite3
-cache
-build
-service-account
-.env
-/staticfiles/
