@@ -60,3 +60,4 @@ uritemplate==4.1.1
 urllib3==1.26.16
 virtualenv==20.24.5
 whitenoise==6.5.0
+dj-database-url 2.1.0
