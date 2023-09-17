@@ -39,7 +39,8 @@ class TestNotificationView(APIView):
 
             return Response({"message": "Test notification sent successfully"}, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": "Test notification not sent"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+         print("Error:", str(e))
+         return Response({"error": "Test notification not sent"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
     def send_assignment_notification(self, assignment):
