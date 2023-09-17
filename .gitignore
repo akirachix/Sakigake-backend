@@ -1,8 +1,8 @@
-__pycache__
-myenv/
+__pycache__/
 db.sqlite3
 cache
 build
 service-account
 .env
 /staticfiles/
+myenv/

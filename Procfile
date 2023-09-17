@@ -1,1 +1,1 @@
-web: sakigakebackendproject/Procfile
+web: gunicorn sakigakebackendproject.wsgi --log-file -
