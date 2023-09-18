@@ -24,6 +24,7 @@ class SchoolListView(APIView):
         except Exception as e:
             return Response({"error": "An error occurred while creating a new school"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
 class DetailView(APIView):
     def get(self, request, id, format=None):
         try:
@@ -52,6 +53,8 @@ class DetailView(APIView):
             return Response({"message": "School deleted"}, status=status.HTTP_204_NO_CONTENT)
         except School.DoesNotExist:
             return Response({"error": "School not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
 
 
 
