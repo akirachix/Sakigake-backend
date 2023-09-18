@@ -46,3 +46,13 @@ class SubjectDetailView(APIView):
             return Response("Subject not found", status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    def delete(self, request, subject_id, format=None):
+        try:
+            subject = Subject.objects.get(id=subject_id)
+            subject.delete()
+            return Response("Subject deleted", status=status.HTTP_204_NO_CONTENT)
+        except Subject.DoesNotExist:
+            return Response("Subject not found", status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response(str(e), status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -13,6 +13,7 @@ class SchoolListView(APIView):
         except Exception as e:
             return Response({"error": "An error occurred while fetching schools"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
     def post(self, request):
         try:
             serializer = SchoolSerializer(data=request.data)
@@ -23,6 +24,7 @@ class SchoolListView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({"error": "An error occurred while creating a new school"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
 class DetailView(APIView):
