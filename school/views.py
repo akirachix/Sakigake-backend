@@ -27,7 +27,7 @@ class SchoolListView(APIView):
 class DetailView(APIView):
     def get(self, request, school_id, format=None):
         try:
-            school = School.objects.get(school_id=school_id)
+            school = School.objects.get(id=school_id)
             serializer = SchoolSerializer(school)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except School.DoesNotExist:
@@ -35,7 +35,7 @@ class DetailView(APIView):
 
     def put(self, request, school_id, format=None):
         try:
-            school = School.objects.get(school_id=school_id)
+            school = School.objects.get(id=school_id)
             serializer = SchoolSerializer(school, data=request.data) 
             if serializer.is_valid():
                 serializer.save()
@@ -47,7 +47,7 @@ class DetailView(APIView):
 
     def delete(self, request, school_id, format=None):
         try:
-            school = School.objects.get(school_id=school_id)
+            school = School.objects.get(id=school_id)
             school.delete()
             return Response({"message": "School deleted"}, status=status.HTTP_204_NO_CONTENT)
         except School.DoesNotExist:

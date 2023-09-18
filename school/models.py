@@ -19,14 +19,13 @@ class School(models.Model):
         ('4', 'Grade 4'),
         ('5', 'Grade 5'),
         ('6', 'Grade 6'),
-    )
+    ) 
 
     school= models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(validators=[validate_email])
     subjects = models.CharField(max_length=50, default='')
     grades = MultiSelectField(choices=GRADE_CHOICES, validators=[MaxValueMultiFieldValidator(6)]) 
-  
     phone_number = PhoneNumberField(blank=True, null=True)
     website = models.URLField()
     location = models.CharField(max_length=200)
