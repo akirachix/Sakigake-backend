@@ -2,13 +2,9 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from school.models import School
 
-from subject.models import Subject
-
-
 
 class Teacher(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE,null=True)
-    subject=models.ForeignKey(Subject, on_delete=models.CASCADE,null=True)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     email = models.EmailField()
