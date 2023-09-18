@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'assignment',
     'shop',
     'rest_framework',
+    'rest_framework_swagger',
     'phonenumber_field',
     'drf_yasg',
     'comments',  
@@ -69,6 +70,21 @@ SWAGGER_SETTINGS = {
     'LOGOUT_URL': 'admin:logout',  
     'USE_SESSION_AUTH': False,
 }
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        },
+    },
+    'USE_SESSION_AUTH': False,  
+    'JSON_EDITOR': True,
+    'SHOW_REQUEST_HEADERS': True,
+    'DEFAULT_MODEL_DEPTH': 2,
+}
+
 
 
 MIDDLEWARE = [
