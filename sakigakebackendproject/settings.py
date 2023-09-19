@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,33 +58,6 @@ INSTALLED_APPS = [
     'subject',
     'teachers',
 ]
-
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        },
-    },
-    'LOGIN_URL': 'admin:login', 
-    'LOGOUT_URL': 'admin:logout',  
-    'USE_SESSION_AUTH': False,
-}
-
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header',
-        },
-    },
-    'USE_SESSION_AUTH': False,  
-    'JSON_EDITOR': True,
-    'SHOW_REQUEST_HEADERS': True,
-    'DEFAULT_MODEL_DEPTH': 2,
-}
 
 
 
@@ -211,3 +185,16 @@ REST_FRAMEWORK = {
 django_heroku.settings(locals())
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        },
+    },
+    'LOGIN_URL': 'admin:login', 
+    'LOGOUT_URL': 'admin:logout',  
+    'USE_SESSION_AUTH': False,
+}
