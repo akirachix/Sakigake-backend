@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'assignment',
     'shop',
     'rest_framework',
+    'rest_framework_swagger',
     'phonenumber_field',
     'drf_yasg',
     'comments',  
@@ -57,18 +59,6 @@ INSTALLED_APPS = [
     'teachers',
 ]
 
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Token': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header'
-        },
-    },
-    'LOGIN_URL': 'admin:login', 
-    'LOGOUT_URL': 'admin:logout',  
-    'USE_SESSION_AUTH': False,
-}
 
 
 MIDDLEWARE = [
@@ -195,3 +185,16 @@ REST_FRAMEWORK = {
 django_heroku.settings(locals())
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        },
+    },
+    'LOGIN_URL': 'admin:login', 
+    'LOGOUT_URL': 'admin:logout',  
+    'USE_SESSION_AUTH': False,
+}

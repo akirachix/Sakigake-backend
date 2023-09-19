@@ -16,6 +16,7 @@ django-multiselectfield==0.1.12
 django-phonenumber-field==7.1.0
 django-test-without-migrations==0.6
 djangorestframework==3.14.0
+django-rest-swagger==2.2.0
 drf-yasg==1.21.7
 filelock==3.12.4
 firebase-admin==6.2.0
