@@ -24,7 +24,6 @@ class School(models.Model):
     school= models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(validators=[validate_email])
-    subjects = models.CharField(max_length=50, default='')
     grades = MultiSelectField(choices=GRADE_CHOICES, validators=[MaxValueMultiFieldValidator(6)]) 
     phone_number = PhoneNumberField(blank=True, null=True)
     website = models.URLField()
