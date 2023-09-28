@@ -106,20 +106,8 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE' :'django.db.backends.postgresql_psycopg2',
-        'NAME':  'mzaziconnect',
-        'USER': 'sakigake',
-        'PASSWORD': 'mzaziconnect',
-        'HOST':'localhost',
-        'PORT': '5432'
-    }
-}
 
-
-# DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
-
+DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 
 
