@@ -1,13 +1,22 @@
 from django.contrib import admin
-from .models import CustomUser, Teacher 
+from .models import School, Teacher, Parent
 
-class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('email','school_name','email',)
+class TeacherInline(admin.TabularInline):
+    model = Teacher
+
+class ParentInline(admin.TabularInline):
+    model = Parent
+
+class SchoolAdmin(admin.ModelAdmin):
+    inlines = [TeacherInline, ParentInline]
+    list_display = ('school_name', 'email_address', 'phonenumber')
+
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'created_by')
+    list_display = ('first_name', 'last_name', 'email_address', 'school', 'phone_number' )
 
+class ParentAdmin(admin.ModelAdmin):
+    list_display = ('first_name', 'last_name', 'email_address', 'school', 'phone_number')
 
-
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(School, SchoolAdmin)
 admin.site.register(Teacher, TeacherAdmin)
-# admin.site.register(Parent, ParentAdmin)
+admin.site.register(Parent, ParentAdmin)
