@@ -10,7 +10,7 @@ class Assignment(models.Model):
     task = models.TextField()
     resources = ArrayField(models.CharField(max_length=50), default=list)
     category = models.ForeignKey(Shop, on_delete=models.CASCADE)
-    due_date = models.DateTimeField(default=None, null=True, blank=True)
+    due_date = models.DateTimeField(default=None, blank=True)
     date_added_at = models.DateTimeField(default=None, null=True, blank=True)
     date_updated_at = models.DateTimeField(default=None, null=True, blank=True)
 

@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import dj_database_url
 import django_heroku
 from pathlib import Path
 import os
@@ -104,11 +103,21 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE' :'django.db.backends.postgresql_psycopg2',
+#         'NAME':  'mzaziconnect',
+#         'USER': 'sakigake',
+#         'PASSWORD': 'mzaziconnect',
+#         'HOST':'localhost',
+#         'PORT': '5432'
+#     }
+
+# }
 
 
-
+import dj_database_url
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
-
 
 
 import firebase_admin
