@@ -2,7 +2,7 @@ from django.db import models
 from assignment.models import Assignment
 from django.conf import settings
 from parents.models import Parent
-from django.contrib.auth.models import CustomUser
+from accounts.models import CustomUser
 
 
 

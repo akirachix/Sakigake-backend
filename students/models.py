@@ -1,5 +1,7 @@
 from django.db import models
-from parents.models import Parent
+# from parents.models import Parent
+from accounts.models import Parent
+from grade.models import Grade
 from phonenumber_field.modelfields import PhoneNumberField
 
 
@@ -10,7 +12,8 @@ class Student(models.Model):
     parent_phone_number = PhoneNumberField(region='KE')
     date_added_at = models.DateTimeField(auto_now_add=True)
     date_updated_at= models.DateTimeField(auto_now=True)
-    class_grade = models.CharField(max_length=32)
+    class_grade = models.OneToOneField(Grade, on_delete=models.CASCADE)
+  
     parent = models.ForeignKey(Parent, null=True, on_delete=models.CASCADE)
 
    
