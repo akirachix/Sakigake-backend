@@ -18,3 +18,4 @@ class Assignment(models.Model):
 
     def __str__(self):
         return self.topic
+    
