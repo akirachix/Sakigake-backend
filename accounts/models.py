@@ -32,8 +32,8 @@ class School(models.Model):
     school_name = models.CharField(max_length=200)
     email_address = models.EmailField(unique=True)
     phonenumber = models.CharField(max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
     def __str__(self):
         return self.school_name
@@ -59,16 +59,17 @@ class School(models.Model):
             school=self
         )
         return parent
+    
 
 class Teacher(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField(null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
-    is_class_teacher = models.BooleanField(default=False)
+    is_class_teacher = models.BooleanField()
     phone_number = models.CharField(unique=True, max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
     
 
