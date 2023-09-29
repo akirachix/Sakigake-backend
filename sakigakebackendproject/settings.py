@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'assignment',
     'shop',
     'rest_framework',
-    # 'rest_framework_swagger',
     'phonenumber_field',
     'drf_yasg',
     'comments',  
