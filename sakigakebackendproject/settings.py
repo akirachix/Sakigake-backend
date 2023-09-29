@@ -49,14 +49,10 @@ INSTALLED_APPS = [
     'drf_yasg',
     'comments',  
     'test_without_migrations',
-    'school',
-    'accounts',
-    'parents',
-    # 'rest_framework_simplejwt',
+    'account',
     'students',
     'subject',
-    'teachers',
-    'grade',
+    'grade'
     
     
   
@@ -173,7 +169,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'account.CustomUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

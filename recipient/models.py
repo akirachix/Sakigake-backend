@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import Parent
+from account.models import Parent
 
 from assignment.models import Assignment
 

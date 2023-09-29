@@ -1,5 +1,5 @@
 from django.db import models
-from teachers.models import Teacher
+from account.models import Teacher
 
 class Subject(models.Model):
     subject_name = models.CharField(max_length=255, unique=True)

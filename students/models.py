@@ -1,6 +1,6 @@
 from django.db import models
 # from parents.models import Parent
-from accounts.models import Parent
+from account.models import Parent
 from grade.models import Grade
 from phonenumber_field.modelfields import PhoneNumberField
 

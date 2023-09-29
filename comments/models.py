@@ -1,8 +1,8 @@
 from django.db import models
 from assignment.models import Assignment
 from django.conf import settings
-from parents.models import Parent
-from accounts.models import CustomUser
+from account.models import Parent
+from account.models import CustomUser
 
 
 

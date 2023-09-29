@@ -1,5 +1,5 @@
 from django.db import models
-from teachers.models import Teacher
+from account.models import Teacher
 from multiselectfield import MultiSelectField
 from django.core.validators import MaxValueValidator
 from multiselectfield.validators import MaxValueMultiFieldValidator
