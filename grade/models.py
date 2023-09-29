@@ -6,6 +6,5 @@ from multiselectfield.validators import MaxValueMultiFieldValidator
 
 
 class Grade(models.Model):
-   
     grade_name = models.CharField(max_length=50)
-    class_teacher = models.OneToOneField(Teacher, on_delete=models.SET_NULL,null=True, related_name='grade')
+    class_teacher = models.CharField(max_length=100)
