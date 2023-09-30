@@ -112,6 +112,18 @@ class ParentRegistrationView(APIView):
             return Response(response_data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, school_id):
+        try:
+            school = School.objects.get(id=school_id)
+        except School.DoesNotExist:
+            return Response("Invalid school ID.", status=status.HTTP_400_BAD_REQUEST)
+
+        parents = Parent.objects.filter(school=school)
+
+        serializer = ParentRegistrationSerializer(parents, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)  
 
 # Teacher registration API
 class TeacherRegistrationView(APIView):
@@ -126,21 +138,30 @@ class TeacherRegistrationView(APIView):
             teacher = serializer.save(school=school)
             response_data = {
                 "message": "Teacher registered successfully.",
-                "school_name": school.school_name,
-                "teacher_email": teacher.email_address
+
             }
             return Response(response_data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    def get(self, request, school_id):
+        try:
+            school = School.objects.get(id=school_id)
+        except School.DoesNotExist:
+            return Response("Invalid school ID.", status=status.HTTP_400_BAD_REQUEST)
+
+        teachers = Teacher.objects.filter(school=school)
+
+        serializer = TeacherRegistrationSerializer(teachers, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)      
 
 class ParentLoginView(APIView):
     def post(self, request):
         serializer = ParentLoginSerializer(data=request.data)
         if serializer.is_valid():
             response_data = {
-                "message": "Parent  registered successfully.",
-                "first_name": school.school_name,
-                "teacher_email": teacher.email_address
+                "message": "Parent  loged in successfully.",
             }
             return Response(response_data, status=status.HTTP_200_OK)
         else:

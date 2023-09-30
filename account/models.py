@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -32,8 +33,9 @@ class School(models.Model):
     school_name = models.CharField(max_length=200)
     email_address = models.EmailField(unique=True)
     phonenumber = models.CharField(max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
+
 
     def __str__(self):
         return self.school_name
@@ -59,6 +61,7 @@ class School(models.Model):
             school=self
         )
         return parent
+    
 
 class Teacher(models.Model):
     first_name = models.CharField(max_length=32)
@@ -67,8 +70,8 @@ class Teacher(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
     is_class_teacher = models.BooleanField(default=False)
     phone_number = models.CharField(unique=True, max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
     
 
@@ -81,9 +84,13 @@ class Parent(models.Model):
     email_address = models.EmailField(null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
     phone_number = models.CharField(unique=True, max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
+    
+    
+    

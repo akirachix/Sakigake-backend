@@ -7,24 +7,19 @@ from .models import Assignment
 from .serializers import AssignmentSerializer
 
 class AssigmentView(APIView):
-    def get(self,request):
-        try:
-            assignment = Assignment.objects.all()
-            serializer = AssignmentSerializer(assignment,many=True)
-            return Response(serializer.data ,status=status.HTTP_200_OK)
-        except Exception as e:
-            return Response ({"error":"An error occurred while fetching assignments"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    def get (self,request):
+        assignments= Assignment.objects.all()
+        serializer = AssignmentSerializer(assignments, many=True)
+        return Response(serializer.data)
         
     
     def post(self,request):
-        try:
-            serializer = AssignmentSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
-            return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-        except Exception as e:
-            return Response({"error":"An error occurred when creating a new assignment"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        serializer = AssignmentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class TestNotificationView(APIView):
 

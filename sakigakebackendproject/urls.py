@@ -20,15 +20,12 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('school/' , include('school.urls')),
     path('assignment/', include('assignment.urls')),
     path('shop/', include('shop.urls')),
-    path('teachers/', include('teachers.urls')),
     path('subjects/', include('subject.urls')),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path("comments/", include ("comments.urls")),
-    path("accounts/", include ("accounts.urls")),
-    path("parents/",include("parents.urls")),
+    path("account/", include ("account.urls")),
     path("students/", include("students.urls")),
     path("grades/", include("grade.urls")),
    

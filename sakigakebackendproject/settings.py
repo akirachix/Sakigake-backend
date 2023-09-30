@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import dj_database_url
 import django_heroku
 from pathlib import Path
 import os
@@ -42,23 +41,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
     'multiselectfield',
     'assignment',
     'shop',
     'rest_framework',
-    # 'rest_framework_swagger',
     'phonenumber_field',
     'drf_yasg',
     'comments',  
     'test_without_migrations',
-    'school',
-    'accounts',
-    'parents',
-    # 'rest_framework_simplejwt',
+    'account',
     'students',
     'subject',
-    'teachers',
-    'grade',
+    'grade'
     
     
   
@@ -98,17 +93,25 @@ TEMPLATES = [
 WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE' :'django.db.backends.postgresql_psycopg2',
+#         'NAME':  'sakigake',
+#         'USER': 'mzaziconnect',
+#         'PASSWORD': 'sakigake
+#         'HOST':'localhost',
+#         'PORT': '5432'
+#     }
+
+# }
 
 
-
+import dj_database_url
 DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
-
 
 
 import firebase_admin
@@ -167,7 +170,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'account.CustomUser'
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

@@ -1,6 +1,6 @@
 # from rest_framework import serializers
-from .models import School
 import re
+from .models import School
 # from rest_framework import serializers
 # from .models import School
 # from django.contrib.auth import authenticate

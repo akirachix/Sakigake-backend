@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from teachers.models import Teacher
+from account.models import Teacher
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import GradeSerializer
