@@ -145,25 +145,33 @@ class TeacherRegistrationSerializer(serializers.ModelSerializer):
         return teacher
 
 class ParentLoginSerializer(serializers.Serializer):
-    phone_number = serializers.CharField()
-    password = serializers.CharField()
 
-    def validate(self, attrs):
-        phone_number = attrs.get('phone_number')
-        password = attrs.get('password')
+    class Meta:
+        model = Parent
+        fields = '__all__'
+    def create(self, validated_data):
+        user = Parent.objects.create(validated_data['phone_number'], validated_data['password'],)
+        return user
+    
+    # phone_number = serializers.CharField()
+    # password = serializers.CharField()
 
-        if phone_number and password:
-            parent = Parent.objects.filter(phone_number=phone_number).first()
+    # def validate(self, attrs):
+    #     phone_number = attrs.get('phone_number')
+    #     password = attrs.get('password')
 
-            if not parent:
-                raise serializers.ValidationError("Invalid phone number or password.")
+    #     if phone_number and password:
+    #         parent = Parent.objects.filter(phone_number=phone_number).first()
 
-            if not parent.create_password == password:
-                raise serializers.ValidationError("Invalid phone number or password.")
-        else:
-            raise serializers.ValidationError("Phone number and password are required.")
+    #         if not parent:
+    #             raise serializers.ValidationError("Invalid phone number or password.")
 
-        return attrs
+    #         if not parent.create_password == password:
+    #             raise serializers.ValidationError("Invalid phone number or password.")
+    #     else:
+    #         raise serializers.ValidationError("Phone number and password are required.")
+
+    #     return attrs
 
 class TeacherLoginSerializer(serializers.Serializer):
     phone_number = serializers.CharField()
