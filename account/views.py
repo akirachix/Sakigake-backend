@@ -113,10 +113,17 @@ class ParentRegistrationView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def get(self, request):
-        parents = Parent.objects.all()
+    def get(self, request, school_id):
+        try:
+            school = School.objects.get(id=school_id)
+        except School.DoesNotExist:
+            return Response("Invalid school ID.", status=status.HTTP_400_BAD_REQUEST)
+
+        parents = Parent.objects.filter(school=school)
+
         serializer = ParentRegistrationSerializer(parents, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)    
+
+        return Response(serializer.data, status=status.HTTP_200_OK)  
 
 # Teacher registration API
 class TeacherRegistrationView(APIView):
@@ -137,10 +144,17 @@ class TeacherRegistrationView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
-    def get(self, request):
-        teachers = Teacher.objects.all()
-        serializer = ParentRegistrationSerializer(teachers, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)        
+    def get(self, request, school_id):
+        try:
+            school = School.objects.get(id=school_id)
+        except School.DoesNotExist:
+            return Response("Invalid school ID.", status=status.HTTP_400_BAD_REQUEST)
+
+        teachers = Teacher.objects.filter(school=school)
+
+        serializer = TeacherRegistrationSerializer(teachers, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)      
 
 class ParentLoginView(APIView):
     def post(self, request):
