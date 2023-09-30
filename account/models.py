@@ -84,8 +84,8 @@ class Parent(models.Model):
     email_address = models.EmailField(null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
     phone_number = models.CharField(unique=True, max_length=200)
-    create_password = models.CharField(max_length=200, null=True)
-    confirm_password = models.CharField(max_length=200, null=True)
+    create_password = models.CharField(max_length=200)
+    confirm_password = models.CharField(max_length=200)
 
 
     def __str__(self):
