@@ -7,13 +7,11 @@ from .models import Assignment
 from .serializers import AssignmentSerializer
 
 class AssigmentView(APIView):
-    def get(self,request):
-        try:
-            assignment = Assignment.objects.all()
-            serializer = AssignmentSerializer(assignment,many=True)
-            return Response(serializer.data ,status=status.HTTP_200_OK)
-        except Exception as e:
-            return Response ({"error":"An error occurred while fetching assignments"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+    def get (self,request):
+        assignments= Assignment.objects.all()
+        serializer = AssignmentSerializer(assignments, many=True)
+        return Response(serializer.data)
         
     
     def post(self,request):
