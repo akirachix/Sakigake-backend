@@ -161,7 +161,7 @@ class ParentLoginView(APIView):
         serializer = ParentLoginSerializer(data=request.data)
         if serializer.is_valid():
             response_data = {
-                "message": "Parent  registered successfully.",
+                "message": "Parent  loged in successfully.",
             }
             return Response(response_data, status=status.HTTP_200_OK)
         else:

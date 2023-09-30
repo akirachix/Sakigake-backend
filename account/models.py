@@ -68,7 +68,7 @@ class Teacher(models.Model):
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField(null=True)
     school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
-    is_class_teacher = models.BooleanField()
+    is_class_teacher = models.BooleanField(default=False)
     phone_number = models.CharField(unique=True, max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
