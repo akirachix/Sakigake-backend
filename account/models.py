@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -32,7 +34,7 @@ class CustomUser(AbstractUser):
 class School(models.Model):
     school_name = models.CharField(max_length=200)
     email_address = models.EmailField(unique=True)
-    phonenumber = models.CharField(max_length=200)
+    phonenumber = PhoneNumberField(unique=True,max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
 
@@ -67,9 +69,9 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     email_address = models.EmailField(null=True)
-    school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
     is_class_teacher = models.BooleanField(default=False)
-    phone_number = models.CharField(unique=True, max_length=200)
+    phone_number = PhoneNumberField(unique=True, max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
 
@@ -81,9 +83,9 @@ class Teacher(models.Model):
 class Parent(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
-    email_address = models.EmailField(null=True)
-    school = models.ForeignKey(School, on_delete=models.CASCADE , default=1)
-    phone_number = models.CharField(unique=True, max_length=200)
+    email_address = models.EmailField(max_length=100)
+    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    phone_number = PhoneNumberField(unique=True, max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
 
