@@ -9,13 +9,13 @@ class ParentInline(admin.TabularInline):
 
 class SchoolAdmin(admin.ModelAdmin):
     inlines = [TeacherInline, ParentInline]
-    list_display = ('school_name', 'email_address', 'phonenumber','create_password','confirm_password')
+    list_display = ('school_name', 'email_address', 'phonenumber','create_password')
 
 class TeacherAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name','is_class_teacher', 'email_address', 'school', 'phone_number','create_password','confirm_password' )
+    list_display = ('first_name', 'last_name','is_class_teacher', 'email_address', 'school', 'phone_number','create_password')
 
 class ParentAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email_address', 'school', 'phone_number','create_password','confirm_password')
+    list_display = ('first_name', 'last_name', 'email_address', 'school', 'phone_number','create_password')
 
 
 admin.site.register(School, SchoolAdmin)
