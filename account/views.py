@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework import status
+from sakigakebackendproject import settings
+from django.core.mail import send_mail
+from sakigakebackendproject.settings import EMAIL_HOST_USER
 from django.contrib.auth import authenticate, login, logout
 from .models import School, Teacher, Parent
 from .serializers import (
@@ -102,6 +105,19 @@ class ParentRegistrationView(APIView):
         serializer = ParentRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             parent = serializer.save(school=school)
+            
+            subject = 'Welcome to Our School'
+            message = f'Hello {parent.first_name},\n\n' \
+                      f'You have been registered as a parent at {school.school_name}.\n' \
+                      f'Your email: {parent.email_address}\n' \
+                      f'Your password: {parent.create_password}\n' \
+                      f'Thank you for joining our school!\n'
+
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [parent.email_address]
+
+            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+            
             response_data = {
                 "message": "Parent registered successfully.",
                 "school_name": school.school_name,
