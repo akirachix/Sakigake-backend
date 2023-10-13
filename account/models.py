@@ -72,7 +72,7 @@ class School(models.Model):
 class Teacher(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
-    email_address = models.EmailField(null=True)
+    email_address = models.EmailField(max_length=200)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     is_class_teacher = models.BooleanField(default=False)
     phone_number = PhoneNumberField(unique=True, max_length=200)
@@ -92,7 +92,7 @@ class Teacher(models.Model):
 class Parent(models.Model):
     first_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
-    email_address = models.EmailField(max_length=100)
+    email_address = models.EmailField(max_length=200)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     phone_number = PhoneNumberField(unique=True, max_length=200)
     create_password = models.CharField(default='@1',max_length=200)
