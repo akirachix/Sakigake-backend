@@ -35,8 +35,7 @@ class School(models.Model):
     school_name = models.CharField(max_length=200)
     email_address = models.EmailField(unique=True)
     phonenumber = PhoneNumberField(unique=True,max_length=200)
-    create_password = models.CharField(default='@1')
-    confirm_password = models.CharField(max_length=200)
+    create_password = models.CharField(default='@1',max_length=100)
     
     def save(self, *args, **kwargs):
         if not self.create_password:
@@ -77,8 +76,7 @@ class Teacher(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     is_class_teacher = models.BooleanField(default=False)
     phone_number = PhoneNumberField(unique=True, max_length=200)
-    create_password = models.CharField(default='@1')
-    confirm_password = models.CharField(max_length=200)
+    create_password = models.CharField(default='@1',max_length=100)
     
     def save(self, *args, **kwargs):
         if not self.create_password:
@@ -97,8 +95,7 @@ class Parent(models.Model):
     email_address = models.EmailField(max_length=100)
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     phone_number = PhoneNumberField(unique=True, max_length=200)
-    create_password = models.CharField(default='@1')
-    confirm_password = models.CharField(max_length=200)
+    create_password = models.CharField(default='@1',max_length=200)
     
         
     def save(self, *args, **kwargs):
