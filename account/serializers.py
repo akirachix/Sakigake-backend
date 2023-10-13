@@ -4,8 +4,6 @@ from .models import School
 from rest_framework import serializers
 
 class SchoolSerializer(serializers.ModelSerializer):
-    confirm_password = serializers.CharField(max_length=200, write_only=True)
-
     class Meta:
         model = School
         fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password')
@@ -18,11 +16,7 @@ class SchoolSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Email address already exists.")
         return value
 
-    def validate_confirm_password(self, value):
-        create_password = self.initial_data.get('create_password')
-        if value != create_password:
-            raise serializers.ValidationError("Passwords do not match.")
-        return value
+
 
     def validate_create_password(self, value):
         if not re.search(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%^&+=]).{8,}$', value):
@@ -38,7 +32,6 @@ class SchoolSerializer(serializers.ModelSerializer):
 from .models import School, Parent, Teacher
 
 class ParentRegistrationSerializer(serializers.ModelSerializer):
-    confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
         model = Parent
@@ -49,7 +42,6 @@ class ParentRegistrationSerializer(serializers.ModelSerializer):
 
 
 class TeacherRegistrationSerializer(serializers.ModelSerializer):
-    confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
         model = Teacher
