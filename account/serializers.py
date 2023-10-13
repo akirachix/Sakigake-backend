@@ -46,12 +46,7 @@ class ParentRegistrationSerializer(serializers.ModelSerializer):
         extra_kwargs = {'create_password': {'write_only': True}}
 
 
- 
 
-    def create(self, validated_data):
-        validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
-        parent = Parent.objects.create(**validated_data)
-        return parent
 
 class TeacherRegistrationSerializer(serializers.ModelSerializer):
     confirm_password = serializers.CharField(write_only=True)
@@ -63,12 +58,6 @@ class TeacherRegistrationSerializer(serializers.ModelSerializer):
 
 
         
-   
-
-    def create(self, validated_data):
-        validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
-        teacher = Teacher.objects.create(**validated_data)
-        return teacher
 
 class ParentLoginSerializer(serializers.Serializer):
     phone_number = serializers.CharField()
