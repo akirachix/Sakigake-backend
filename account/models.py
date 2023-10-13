@@ -78,7 +78,7 @@ class Teacher(models.Model):
     def save(self, *args, **kwargs):
         if not self.create_password:
             self.create_password = f"{self.first_name}@1"
-        super(School, self).save(*args, **kwargs)
+        super(Teacher, self).save(*args, **kwargs)
 
 
     
@@ -98,7 +98,7 @@ class Parent(models.Model):
     def save(self, *args, **kwargs):
         if not self.create_password:
             self.create_password = f"{self.first_name}@1"
-        super(School, self).save(*args, **kwargs)
+        super(Parent, self).save(*args, **kwargs)
 
 
     def __str__(self):
