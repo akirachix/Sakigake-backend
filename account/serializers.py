@@ -8,7 +8,7 @@ class SchoolSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = School
-        fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password', 'confirm_password')
+        fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password')
         extra_kwargs = {'create_password': {'write_only': True}}
 
 
@@ -42,7 +42,7 @@ class ParentRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Parent
-        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password']
         extra_kwargs = {'create_password': {'write_only': True}}
 
 
@@ -58,7 +58,7 @@ class TeacherRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teacher
-        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password']
         extra_kwargs = {'create_password': {'write_only': True}}
 
 

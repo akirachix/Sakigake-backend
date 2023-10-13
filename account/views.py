@@ -7,11 +7,9 @@ from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 from .models import School, Teacher, Parent
 from .serializers import (
- 
+
     SchoolSerializer,
     TeacherLoginSerializer,
- 
-   
 )
 
 class SignupView(APIView):
