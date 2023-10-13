@@ -138,7 +138,6 @@ class TeacherRegistrationView(APIView):
             teacher = serializer.save(school=school)
             response_data = {
                 "message": "Teacher registered successfully.",
-
             }
             return Response(response_data, status=status.HTTP_201_CREATED)
         else:

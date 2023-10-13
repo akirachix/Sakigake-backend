@@ -9,6 +9,15 @@ class SchoolSerializer(serializers.ModelSerializer):
     class Meta:
         model = School
         fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password', 'confirm_password')
+        
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if self.context['request'].method == 'GET':
+            # Exclude create_password and confirm_password for GET requests
+            data.pop('create_password')
+            data.pop('confirm_password')
+        return data    
+
 
     def validate_email_address(self, value):
         if School.objects.filter(email_address=value).exists():
@@ -32,16 +41,6 @@ class SchoolSerializer(serializers.ModelSerializer):
         return value
 
 
-from rest_framework import serializers
-from .models import Parent, Teacher
-
-
-from rest_framework import serializers
-
-
-
-
-from rest_framework import serializers
 from .models import School, Parent, Teacher
 
 class ParentRegistrationSerializer(serializers.ModelSerializer):
@@ -50,6 +49,14 @@ class ParentRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parent
         fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if self.context['request'].method == 'GET':
+            # Exclude create_password and confirm_password for GET requests
+            data.pop('create_password')
+            data.pop('confirm_password')
+        return data
 
     def create(self, validated_data):
         validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
@@ -62,6 +69,14 @@ class TeacherRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
         fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if self.context['request'].method == 'GET':
+            # Exclude create_password and confirm_password for GET requests
+            data.pop('create_password')
+            data.pop('confirm_password')
+        return data    
 
     def create(self, validated_data):
         validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
