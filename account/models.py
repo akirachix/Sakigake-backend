@@ -35,8 +35,13 @@ class School(models.Model):
     school_name = models.CharField(max_length=200)
     email_address = models.EmailField(unique=True)
     phonenumber = PhoneNumberField(unique=True,max_length=200)
-    create_password = models.CharField(max_length=200)
+    create_password = models.CharField(default='@1')
     confirm_password = models.CharField(max_length=200)
+    
+    def save(self, *args, **kwargs):
+        if not self.create_password:
+            self.create_password = f"{self.school_name}@1"
+        super(School, self).save(*args, **kwargs)
 
 
     def __str__(self):
@@ -74,6 +79,12 @@ class Teacher(models.Model):
     phone_number = PhoneNumberField(unique=True, max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
+    
+    def save(self, *args, **kwargs):
+        if not self.create_password:
+            self.create_password = f"{self.first_name}@1"
+        super(School, self).save(*args, **kwargs)
+
 
     
 
@@ -88,6 +99,12 @@ class Parent(models.Model):
     phone_number = PhoneNumberField(unique=True, max_length=200)
     create_password = models.CharField(max_length=200)
     confirm_password = models.CharField(max_length=200)
+    
+        
+    def save(self, *args, **kwargs):
+        if not self.create_password:
+            self.create_password = f"{self.first_name}@1"
+        super(School, self).save(*args, **kwargs)
 
 
     def __str__(self):
