@@ -8,17 +8,9 @@ class SchoolSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = School
-        exclude = ['create_password', 'confirm_password']
+        fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password', 'confirm_password')
+        extra_kwargs = {'create_password': {'write_only': True}}
 
-        # fields = ('id', 'school_name', 'email_address', 'phonenumber', 'create_password', 'confirm_password')
-        
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        if self.context.get('request') and self.context['request'].method == 'GET':
-            # Exclude create_password and confirm_password for GET requests
-            data.pop('create_password')
-            data.pop('confirm_password')
-        return data
 
 
     def validate_email_address(self, value):
@@ -50,17 +42,11 @@ class ParentRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Parent
-        # fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
-        exclude = ['create_password', 'confirm_password']
+        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        extra_kwargs = {'create_password': {'write_only': True}}
 
-        
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        if self.context.get('request') and self.context['request'].method == 'GET':
-            # Exclude create_password and confirm_password for GET requests
-            data.pop('create_password')
-            data.pop('confirm_password')
-        return data
+
+ 
 
     def create(self, validated_data):
         validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
@@ -72,16 +58,12 @@ class TeacherRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teacher
-        exclude = ['create_password', 'confirm_password']
-        # fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        fields = ['id','first_name', 'last_name', 'email_address', 'phone_number', 'create_password', 'confirm_password']
+        extra_kwargs = {'create_password': {'write_only': True}}
+
+
         
-    def to_representation(self, instance):
-        data = super().to_representation(instance)
-        if self.context['request'].method == 'GET':
-            # Exclude create_password and confirm_password for GET requests
-            data.pop('create_password')
-            data.pop('confirm_password')
-        return data    
+   
 
     def create(self, validated_data):
         validated_data.pop('confirm_password')  # Remove confirm_password from validated_data
