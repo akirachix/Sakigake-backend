@@ -138,21 +138,21 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE' :'django.db.backends.postgresql_psycopg2',
-        'NAME':  'sakigake',
-        'USER': 'mzaziconnect',
-        'PASSWORD': 'sakigake',
-        'HOST':'localhost',
-        'PORT': '5432'
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE' :'django.db.backends.postgresql_psycopg2',
+#         'NAME':  'sakigake',
+#         'USER': 'mzaziconnect',
+#         'PASSWORD': 'sakigake',
+#         'HOST':'localhost',
+#         'PORT': '5432'
+#     }
 
-}
+# }
 
 
-# import dj_database_url
-# DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 
 import firebase_admin
