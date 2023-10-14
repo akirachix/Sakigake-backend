@@ -1,11 +1,18 @@
 from rest_framework import generics, permissions
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from django.conf import settings
+
+import smtplib
+from email.mime.text import MIMEText
+
 from rest_framework import serializers
 from rest_framework.views import APIView
 from rest_framework import status
 from sakigakebackendproject import settings
 from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMessage, get_connection
 from sakigakebackendproject.settings import EMAIL_HOST_USER
 from django.contrib.auth import authenticate, login, logout
 from .models import School, Teacher, Parent
@@ -101,22 +108,23 @@ class ParentRegistrationView(APIView):
             school = School.objects.get(id=school_id)
         except School.DoesNotExist:
             return Response("Invalid school ID.", status=status.HTTP_400_BAD_REQUEST)
-
+        
         serializer = ParentRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             parent = serializer.save(school=school)
-            
-            subject = 'Welcome to Our School'
-            message = f'Hello {parent.first_name},\n\n' \
-                      f'You have been registered as a parent at {school.school_name}.\n' \
-                      f'Your email: {parent.email_address}\n' \
-                      f'Your password: {parent.create_password}\n' \
-                      f'Thank you for joining our school!\n'
-
+            username = parent.first_name
+            email = parent.email_address
+            subject= 'welcome to MzaziConnect'
+            message= f'Hello {parent.first_name},\n\n' \
+                     f'You have been registered as a parent at {school.school_name}.\n' \
+                     f'Your email: {parent.email_address}\n' \
+                     f'Your password: {parent.create_password}\n' \
+                     f'Thank you for joining our school!\n'
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = [parent.email_address]
+            recipient_list= [email]
+        
+            send_mail(subject, message, from_email, recipient_list, fail_silently=True)
 
-            send_mail(subject, message, from_email, recipient_list, fail_silently=False)
             
             response_data = {
                 "message": "Parent registered successfully.",
@@ -150,6 +158,18 @@ class TeacherRegistrationView(APIView):
         serializer = TeacherRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             teacher = serializer.save(school=school)
+            email = teacher.email_address
+            subject= 'welcome to MzaziConnect App'
+            message= f'Hello {teacher.first_name},\n\n' \
+                     f'You have been registered as a teacher at {school.school_name}.\n' \
+                     f'Your email: {teacher.email_address}\n' \
+                     f'Your password: {teacher.create_password}\n' \
+                     f'Thank you for joining our school!\n'
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list= [email]
+        
+            send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+            
             response_data = {
                 "message": "Teacher registered successfully.",
             }
