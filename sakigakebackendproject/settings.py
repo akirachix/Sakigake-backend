@@ -61,21 +61,14 @@ INSTALLED_APPS = [
 
 # settings.py
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'live.smtp.mailtrap.io'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = False
-# EMAIL_HOST_USER = 'api'
-# EMAIL_HOST_PASSWORD = 'MzaziConnect@5'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'mzaziconnect5@gmail.com'
-EMAIL_HOST_PASSWORD = 'agbpvfdsxmdqekhl'
+EMAIL_HOST_PASSWORD = 'pztrpigrlnwqybug'
+
 
 
 
@@ -96,6 +89,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3002',
     'http://localhost:3003',
     'http://localhost:3004',
+    'https://mzaziconnect-dashboard-project-g7pf.vercel.app',
+    
 ]
 CORS_ALLOW_METHODS = (
     "DELETE",
@@ -138,21 +133,21 @@ WSGI_APPLICATION = 'sakigakebackendproject.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE' :'django.db.backends.postgresql_psycopg2',
-#         'NAME':  'sakigake',
-#         'USER': 'mzaziconnect',
-#         'PASSWORD': 'sakigake',
-#         'HOST':'localhost',
-#         'PORT': '5432'
-#     }
+DATABASES = {
+    
+    'default': {
+        'ENGINE' :'django.db.backends.postgresql_psycopg2',
+        'NAME':  'sakigake',
+        'USER': 'mzaziconnect',
+        'PASSWORD': 'sakigake',
+        'HOST':'localhost',
+        'PORT': '5432'
+    }
+}
 
-# }
 
-
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
+# import dj_database_url
+# DATABASES = {'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))}
 
 
 import firebase_admin
